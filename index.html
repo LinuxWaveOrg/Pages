@@ -504,12 +504,12 @@
     <p class="tagline" style="max-width:800px;" data-lang="zh">面向 Linux 软件开发者的包管理器。</p>
 
     <div class="version-block" style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;" data-lang="en">
-        <span class="v-line">Latest Version : 2.6.2</span>
-        <span class="v-line">Release on 2026-10-07</span>
+        <span class="v-line">Latest Version : 2.6.3</span>
+        <span class="v-line">Release on 2026-10-08</span>
     </div>
     <div class="version-block" style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;" data-lang="zh">
-        <span class="v-line">最新版本 : 2.6.2</span>
-        <span class="v-line">发布于 2026-10-07</span>
+        <span class="v-line">最新版本 : 2.6.3</span>
+        <span class="v-line">发布于 2026-10-08</span>
     </div>
 
     <a href="https://github.com/LinuxWaveOrg/LinuxWave/releases" class="btn-github" data-lang="en">View On GitHub</a>
@@ -711,10 +711,10 @@
         </p>
 
         <p class="install-note" data-lang="en">
-            <strong>Installing packages into a shared tree needs <code>sudo</code> with the full path.</strong> Only the <code>linuxwave</code> account and root may write there. <code>sudo</code> searches its own <code>PATH</code>, which does not contain <code>/home/linuxwave/.linuxwave/lib</code>, so <code>sudo wave install &hellip;</code> fails with <em>command not found</em>; name the entry point instead: <code>sudo /home/linuxwave/.linuxwave/lib/wave install &lt;package&gt;</code>. A user who cannot write to the tree gets that exact command in the error message. To let several users install without <code>sudo</code>, set up the shared-write group described in <code>.templates/SPECIAL/INSTALL_BY_INTERNET.md</code>.
+            <strong>A shared install is group-based (Linuxbrew style).</strong> The tree belongs to the <code>linuxwave</code> group, and whoever runs the installer joins it, so packages install as yourself &mdash; no <code>sudo</code>, no full path: <code>wave install &lt;package&gt;</code>. Group membership only applies to a new login, so log out and back in (or run <code>newgrp linuxwave</code>) once before the first install. More users: <code>sudo usermod -aG linuxwave &lt;user&gt;</code> (they re-login as well). Group members can write the whole tree, <code>lib/wave</code> included. <code>wave selfupdate</code> still needs <code>sudo</code>: it rewrites <code>/etc/linuxwave_config</code>, which is root-owned. A user who is not in the group gets a working <code>sudo</code> command in the error message &mdash; <code>sudo wave install &hellip;</code> cannot work, because <code>sudo</code> searches its own <code>PATH</code>.
         </p>
         <p class="install-note" data-lang="zh">
-            <strong>往共享安装树里装软件包，必须用 <code>sudo</code> 加全路径。</strong>只有 <code>linuxwave</code> 账号和 root 能写入该目录。<code>sudo</code> 用的是它自己那套 <code>PATH</code>，里面没有 <code>/home/linuxwave/.linuxwave/lib</code>，所以 <code>sudo wave install &hellip;</code> 会报「找不到命令」；请直接写出入口：<code>sudo /home/linuxwave/.linuxwave/lib/wave install &lt;package&gt;</code>。写不进安装树的用户，会在报错信息里原样拿到这条命令。想让多个用户免 <code>sudo</code> 装包，请按 <code>.templates/SPECIAL/INSTALL_BY_INTERNET.md</code> 里说明配置共享写组。
+            <strong>共享安装是组共享的（Linuxbrew 式）。</strong>安装树归 <code>linuxwave</code> 组，运行安装器的人自动入组，所以装包就是以你自己的身份在写——无需 <code>sudo</code>，也无需写全路径：<code>wave install &lt;package&gt;</code>。组身份只在新的登录会话里生效，第一次装包前请退出重登一次（或在当前 shell 跑 <code>newgrp linuxwave</code>）。让更多用户也能装：<code>sudo usermod -aG linuxwave &lt;用户&gt;</code>（他们同样要重登）。组内成员可以改动整棵树，包括 <code>lib/wave</code> 本体。<code>wave selfupdate</code> 仍然需要 <code>sudo</code>：它要重写 root 属主的 <code>/etc/linuxwave_config</code>。不在组内的用户会在报错信息里拿到一条可用的 <code>sudo</code> 命令——<code>sudo wave install &hellip;</code> 本身跑不通，因为 <code>sudo</code> 用的是它自己那套 <code>PATH</code>。
         </p>
 
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Run Packages</h2>
