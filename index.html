@@ -504,11 +504,11 @@
     <p class="tagline" style="max-width:800px;" data-lang="zh">面向 Linux 软件开发者的包管理器。</p>
 
     <div class="version-block" style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;" data-lang="en">
-        <span class="v-line">Latest Version : 2.6.3</span>
+        <span class="v-line">Latest Version : 2.6.4</span>
         <span class="v-line">Release on 2026-10-08</span>
     </div>
     <div class="version-block" style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;" data-lang="zh">
-        <span class="v-line">最新版本 : 2.6.3</span>
+        <span class="v-line">最新版本 : 2.6.4</span>
         <span class="v-line">发布于 2026-10-08</span>
     </div>
 
@@ -711,10 +711,10 @@
         </p>
 
         <p class="install-note" data-lang="en">
-            <strong>A shared install is group-based (Linuxbrew style).</strong> The tree belongs to the <code>linuxwave</code> group, and whoever runs the installer joins it, so packages install as yourself &mdash; no <code>sudo</code>, no full path: <code>wave install &lt;package&gt;</code>. Group membership only applies to a new login, so log out and back in (or run <code>newgrp linuxwave</code>) once before the first install. More users: <code>sudo usermod -aG linuxwave &lt;user&gt;</code> (they re-login as well). Group members can write the whole tree, <code>lib/wave</code> included. <code>wave selfupdate</code> still needs <code>sudo</code>: it rewrites <code>/etc/linuxwave_config</code>, which is root-owned. A user who is not in the group gets a working <code>sudo</code> command in the error message &mdash; <code>sudo wave install &hellip;</code> cannot work, because <code>sudo</code> searches its own <code>PATH</code>.
+            <strong>After a shared install, log out and back in once.</strong> The tree is handed to the <code>linuxwave</code> group and whoever ran the installer joins it, but a group only takes effect in a <em>new login session</em> &mdash; until you re-login (or run <code>newgrp linuxwave</code>) the tree is still unwritable and <code>wave</code> will say so. After that, installing needs neither <code>sudo</code> nor a full path: <code>wave install &lt;package&gt;</code>. The same applies when upgrading an older shared install, since <code>wave selfupdate</code> now hands the tree to the group and adds you to it. More users: <code>sudo usermod -aG linuxwave &lt;user&gt;</code> (they re-login as well). Group members can write the whole tree, <code>lib/wave</code> included. <code>wave selfupdate</code> still needs <code>sudo</code>: it rewrites <code>/etc/linuxwave_config</code>, which is root-owned. A user who is not in the group gets a working <code>sudo</code> command in the error message &mdash; <code>sudo wave install &hellip;</code> cannot work, because <code>sudo</code> searches its own <code>PATH</code>.
         </p>
         <p class="install-note" data-lang="zh">
-            <strong>共享安装是组共享的（Linuxbrew 式）。</strong>安装树归 <code>linuxwave</code> 组，运行安装器的人自动入组，所以装包就是以你自己的身份在写——无需 <code>sudo</code>，也无需写全路径：<code>wave install &lt;package&gt;</code>。组身份只在新的登录会话里生效，第一次装包前请退出重登一次（或在当前 shell 跑 <code>newgrp linuxwave</code>）。让更多用户也能装：<code>sudo usermod -aG linuxwave &lt;用户&gt;</code>（他们同样要重登）。组内成员可以改动整棵树，包括 <code>lib/wave</code> 本体。<code>wave selfupdate</code> 仍然需要 <code>sudo</code>：它要重写 root 属主的 <code>/etc/linuxwave_config</code>。不在组内的用户会在报错信息里拿到一条可用的 <code>sudo</code> 命令——<code>sudo wave install &hellip;</code> 本身跑不通，因为 <code>sudo</code> 用的是它自己那套 <code>PATH</code>。
+            <strong>共享安装完成后，请退出重登一次。</strong>安装树会交给 <code>linuxwave</code> 组，运行安装器的人也会被加进该组，但组身份只在<em>新的登录会话</em>里生效——在你重登（或在当前 shell 跑 <code>newgrp linuxwave</code>）之前，安装树仍然写不进去，<code>wave</code> 也会这么说。重登之后，装包既不需要 <code>sudo</code>，也不需要写全路径：<code>wave install &lt;package&gt;</code>。升级旧的共享安装同理——<code>wave selfupdate</code> 现在也会把安装树交给该组并把你加进去，所以那之后同样要重登一次。让更多用户也能装：<code>sudo usermod -aG linuxwave &lt;用户&gt;</code>（他们同样要重登）。组内成员可以改动整棵树，包括 <code>lib/wave</code> 本体。<code>wave selfupdate</code> 仍然需要 <code>sudo</code>：它要重写 root 属主的 <code>/etc/linuxwave_config</code>。不在组内的用户会在报错信息里拿到一条可用的 <code>sudo</code> 命令——<code>sudo wave install &hellip;</code> 本身跑不通，因为 <code>sudo</code> 用的是它自己那套 <code>PATH</code>。
         </p>
 
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Run Packages</h2>
