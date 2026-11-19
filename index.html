@@ -723,11 +723,11 @@
             已安装的二进制文件存储于（可选）：
         </p>
         <div class="code-container">
-            <pre>1. ~/.local/linuxwave
-2. /opt/linuxwave
-3. /usr/local/linuxwave
-4. /home/linuxwave/.linuxwave (shared, all users)
-5. Custom</pre>
+            <pre>1. /home/linuxwave/.linuxwave (shared, all users) [recommended]
+2. ~/.local/linuxwave
+3. /opt/linuxwave
+4. /usr/local/linuxwave
+5. other (enter custom directory)</pre>
         </div>
         <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
             Config file is stored in (a system-level install always takes priority):
@@ -740,10 +740,10 @@
 2. ~/.config/linuxwave_config     user-level install (no sudo)</pre>
         </div>
         <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
-            A shared install (option 4) always uses <code>/etc/linuxwave_config</code>, so that every user on the machine resolves the same install. It needs <code>patchelf</code>, <code>Python 3.14+</code> and <code>sudo</code> once; the <code>linuxwave</code> account is created automatically if it does not exist.
+            A shared install (option 1, recommended) always uses <code>/etc/linuxwave_config</code>, so that every user on the machine resolves the same install. It needs <code>patchelf</code>, <code>Python 3.14+</code> and <code>sudo</code> once; the <code>linuxwave</code> account is created automatically if it does not exist.
         </p>
         <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="zh">
-            共享安装（选项 4）始终使用 <code>/etc/linuxwave_config</code>，以保证全机所有用户解析到同一个安装。需要 <code>patchelf</code>、<code>Python 3.14+</code>，以及一次性提供 <code>sudo</code>；若 <code>linuxwave</code> 账号不存在会自动创建。
+            共享安装（选项 1，推荐项）始终使用 <code>/etc/linuxwave_config</code>，以保证全机所有用户解析到同一个安装。需要 <code>patchelf</code>、<code>Python 3.14+</code>，以及一次性提供 <code>sudo</code>；若 <code>linuxwave</code> 账号不存在会自动创建。
         </p>
 
         <p class="install-note" data-lang="en">
