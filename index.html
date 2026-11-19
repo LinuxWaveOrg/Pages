@@ -598,13 +598,13 @@
                     <div class="square-front"></div>
                 </div>
             </button>
-            <pre><span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/HEAD/lib/install.sh | /bin/bash &amp;&amp; source ~/.bashrc</pre>
+            <pre><span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/HEAD/lib/install.sh | /bin/bash</pre>
         </div>
         <p style="margin: 10px 0 0 0; font-size: 1rem; line-height: 1.5; color: #a0b0d0; font-style: italic;" data-lang="en">
-            (If you are using zsh instead of bash, run <code>source ~/.zshrc</code>)
+            The installer prints the exact command to make <code>wave</code> available in the current terminal when it finishes.
         </p>
         <p style="margin: 10px 0 0 0; font-size: 1rem; line-height: 1.5; color: #a0b0d0; font-style: italic;" data-lang="zh">
-            （如果你使用的是 zsh 而非 bash，请运行 <code>source ~/.zshrc</code>）
+            安装结束时，安装器会打印出让 <code>wave</code> 在当前终端立刻可用的确切命令。
         </p>
 
         <p class="env-requirements" data-lang="en">
@@ -644,10 +644,14 @@
         </p>
 
         <p class="install-note" data-lang="en">
-            <strong>About this command.</strong> The installer is streamed directly into <code>/bin/bash</code>, so nothing is saved to disk first. Please run it on a reliable network, and avoid pressing <kbd>Ctrl-C</kbd> while it is working: an interrupted stream stops the install partway. If that happens, simply run the same command again. To pass options, use <code>/bin/bash -s -- &lt;options&gt;</code>.
+            <strong>About this command.</strong> The installer is streamed directly into <code>/bin/bash</code>, so nothing is saved to disk first. Please run it on a reliable network, and avoid pressing <kbd>Ctrl-C</kbd> while it is working: an interrupted stream stops the install partway. If that happens, simply run the same command again. To pass options, use <code>/bin/bash -s -- &lt;options&gt;</code>.</p>
+        <p class="install-note" data-lang="en">
+            <strong>Please use this form as written.</strong> Do not rewrite it as <code>/bin/bash -c "$(curl &hellip;)"</code>: that packs the entire script into a single command-line argument, and Linux refuses any single argument longer than 131 071 bytes (<code>Argument list too long</code>) &mdash; this installer is already close to that size, so the whole command would fail for a reason that is difficult to see. Do not pipe it into <code>sudo bash</code> either: <code>sudo</code> resets the environment (including <code>PATH</code> and proxy variables) and bypasses the installer&rsquo;s own privilege handling.
         </p>
         <p class="install-note" data-lang="zh">
-            <strong>关于这条命令。</strong>安装脚本被直接送进 <code>/bin/bash</code> 执行，不会先存到磁盘。请在网络状况良好时运行，并在执行过程中尽量避免按 <kbd>Ctrl-C</kbd>：数据流一旦中断，安装就会停在半途。遇到这种情况，重新执行同一条命令即可。需要传参数时写成 <code>/bin/bash -s -- &lt;参数&gt;</code>。
+            <strong>关于这条命令。</strong>安装脚本被直接送进 <code>/bin/bash</code> 执行，不会先存到磁盘。请在网络状况良好时运行，并在执行过程中尽量避免按 <kbd>Ctrl-C</kbd>：数据流一旦中断，安装就会停在半途。遇到这种情况，重新执行同一条命令即可。需要传参数时写成 <code>/bin/bash -s -- &lt;参数&gt;</code>。</p>
+        <p class="install-note" data-lang="zh">
+            <strong>请照这一种写法用。</strong>不要改成 <code>/bin/bash -c "$(curl &hellip;)"</code>：那会把整份脚本塞进命令行里的一个参数，而 Linux 对单个参数有 131 071 字节的上限（<code>Argument list too long</code>）—— 这个安装脚本已经接近那个尺寸，一旦超了，整条命令会以一个很难看懂的原因失败。也不要接 <code>sudo bash</code>：<code>sudo</code> 会重置环境（<code>PATH</code> 与代理变量都在其中），并绕过安装器自己的提权流程与提示。
         </p>
 
         <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
