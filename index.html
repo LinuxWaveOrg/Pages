@@ -321,6 +321,31 @@
             opacity: 0.8;
         }
 
+        /* 命令正下方的警告：左侧黄色竖条 + 极淡黄底 */
+        .warn-box {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #ffffff;
+            opacity: 0.95;
+            max-width: 800px;
+            text-align: left;
+            margin: 14px 0 10px 0;
+            padding: 12px 16px;
+            border-left: 4px solid #ffcc33;
+            background: rgba(255, 204, 51, 0.08);
+            border-radius: 0 6px 6px 0;
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        .warn-box strong { color: #ffcc33; font-weight: bold; }
+        .warn-box kbd {
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.9em;
+            padding: 1px 5px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 4px;
+        }
+
         /* 内容区限宽：小屏下不因长行（中文/内联代码）被撑宽 */
         .content-section {
             width: 100%;
@@ -600,6 +625,12 @@
             </button>
             <pre><span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/HEAD/lib/install.sh | /bin/bash</pre>
         </div>
+        <div class="warn-box" data-lang="en">
+            <strong>Please use this form as written.</strong> Do not rewrite it as <code>/bin/bash -c "$(curl &hellip;)"</code>: that packs the whole script into a single command-line argument, and Linux refuses any single argument longer than 131&nbsp;071 bytes (<code>Argument list too long</code>) &mdash; this installer is already close to that size. Do not pipe it into <code>sudo bash</code> either: <code>sudo</code> resets the environment (including <code>PATH</code> and proxy variables) and bypasses the installer&rsquo;s own privilege handling. Run it on a reliable network, and avoid pressing <kbd>Ctrl-C</kbd> while it works &mdash; an interrupted stream stops the install partway; if that happens, just run the same command again.
+        </div>
+        <div class="warn-box" data-lang="zh">
+            <strong>请照这一种写法用。</strong>不要改成 <code>/bin/bash -c "$(curl &hellip;)"</code>：那会把整份脚本塞进命令行里的一个参数，而 Linux 对单个参数有 131&nbsp;071 字节的上限（<code>Argument list too long</code>）—— 这个安装脚本已经接近那个尺寸。也不要接 <code>sudo bash</code>：<code>sudo</code> 会重置环境（<code>PATH</code> 与代理变量都在其中），并绕过安装器自己的提权流程与提示。请在网络状况良好时运行，执行中避免按 <kbd>Ctrl-C</kbd> —— 数据流中断会让安装停在半途；真发生了，重新执行同一条命令即可。
+        </div>
         <p style="margin: 10px 0 0 0; font-size: 1rem; line-height: 1.5; color: #a0b0d0; font-style: italic;" data-lang="en">
             The installer prints the exact command to make <code>wave</code> available in the current terminal when it finishes.
         </p>
@@ -643,13 +674,11 @@
             <code>--ci</code> 会自动应答目录菜单与许可协议；当选中的目录需要提权时，它要求免密 sudo 或以 root 运行。不带 <code>--dir-option</code> 时，它会选用推荐默认项 <code>1</code>（<code>/home/linuxwave/.linuxwave</code>，共享安装）并说明用的是哪个默认值，而不是去读一个可能并不存在的终端。<code>--dir-option=N</code> 免菜单直接选定第 <code>N</code> 项（1-5）；自定义项要在 <code>=</code> 之后附上路径，例如 <code>--dir-option=5=/opt/mylw</code>。完整参数列表可运行 <code>install.sh --help</code> 查看。
         </p>
 
-        <p class="install-note" data-lang="en">
-            <strong>About this command.</strong> The installer is streamed directly into <code>/bin/bash</code>, so nothing is saved to disk first. Please run it on a reliable network, and avoid pressing <kbd>Ctrl-C</kbd> while it is working: an interrupted stream stops the install partway. If that happens, simply run the same command again. To pass options, use <code>/bin/bash -s -- &lt;options&gt;</code>.</p>
+        
         <p class="install-note" data-lang="en">
             <strong>Please use this form as written.</strong> Do not rewrite it as <code>/bin/bash -c "$(curl &hellip;)"</code>: that packs the entire script into a single command-line argument, and Linux refuses any single argument longer than 131 071 bytes (<code>Argument list too long</code>) &mdash; this installer is already close to that size, so the whole command would fail for a reason that is difficult to see. Do not pipe it into <code>sudo bash</code> either: <code>sudo</code> resets the environment (including <code>PATH</code> and proxy variables) and bypasses the installer&rsquo;s own privilege handling.
         </p>
-        <p class="install-note" data-lang="zh">
-            <strong>关于这条命令。</strong>安装脚本被直接送进 <code>/bin/bash</code> 执行，不会先存到磁盘。请在网络状况良好时运行，并在执行过程中尽量避免按 <kbd>Ctrl-C</kbd>：数据流一旦中断，安装就会停在半途。遇到这种情况，重新执行同一条命令即可。需要传参数时写成 <code>/bin/bash -s -- &lt;参数&gt;</code>。</p>
+        
         <p class="install-note" data-lang="zh">
             <strong>请照这一种写法用。</strong>不要改成 <code>/bin/bash -c "$(curl &hellip;)"</code>：那会把整份脚本塞进命令行里的一个参数，而 Linux 对单个参数有 131 071 字节的上限（<code>Argument list too long</code>）—— 这个安装脚本已经接近那个尺寸，一旦超了，整条命令会以一个很难看懂的原因失败。也不要接 <code>sudo bash</code>：<code>sudo</code> 会重置环境（<code>PATH</code> 与代理变量都在其中），并绕过安装器自己的提权流程与提示。
         </p>
