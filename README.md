@@ -9,3 +9,7 @@ MacWave for Linux.
   `https://github.com/LinuxWaveOrg/LinuxWave/releases/latest/download/install.sh`
   比现在的 `raw.githubusercontent.com/.../HEAD/lib/install.sh` 稳定 —— 前者按版本冻结，
   后者会跟着开发分支走。
+
+- `foreword/` 下的两个 HTML 是**生成产物**：源文件在 LinuxWave 仓库的
+  `Foreword/Foreword-zh.md` 与 `Foreword/Foreword-en.md`，改内容请改那边再重新生成
+  （本站没有 Jekyll，`.md` 会以纯文本返回，所以这里存的是 HTML）。

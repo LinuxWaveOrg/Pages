@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MacWave / LinuxWave 使用手册</title>
+<style>
+    body {
+        background-color: #0a1b3f;
+        color: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        line-height: 1.75;
+        margin: 0;
+    }
+    main { max-width: 860px; margin: 0 auto; padding: 40px 22px 80px; }
+    .back { display: inline-block; margin-bottom: 22px; color: #a0b0d0; text-decoration: none; font-size: 0.95rem; }
+    .back:hover { color: #ffffff; }
+    h1 { font-size: 1.9rem; line-height: 1.3; border-bottom: 2px solid #4a90e2; padding-bottom: 12px; }
+    h3 { font-size: 1.2rem; margin-top: 2.2em; color: #ffcc33; }
+    p { margin: 0.9em 0; }
+    a { color: #4a90e2; }
+    strong { color: #ffffff; }
+    code {
+        background-color: #0f1a30;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 0.9em;
+        word-break: break-word;
+    }
+    pre {
+        background-color: #08122a;
+        border: 1px solid #24365e;
+        border-radius: 8px;
+        padding: 14px 16px;
+        overflow-x: auto;
+        line-height: 1.6;
+    }
+    pre code { background: none; padding: 0; font-size: 0.88rem; }
+    .table-wrap { overflow-x: auto; margin: 1.2em 0; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.94rem; }
+    th, td { border: 1px solid #2a3f6f; padding: 8px 11px; text-align: left; vertical-align: top; min-width: 6.5em; }
+    th { background-color: #122a55; white-space: nowrap; }
+    td code { white-space: nowrap; }
+</style>
+</head>
+<body>
+<main>
+<a class="back" href="../">&larr; 返回 LinuxWave 首页</a>
+<h1>MacWave / LinuxWave 使用手册</h1>
+<h3>Welcome to Wave World!</h3>
+<p>欢迎使用 MacWave/LinuxWave ！使用前建议你阅读下面的手册：</p>
+<h3>基本命令</h3>
+<p><code>wave</code> 的基本命令你可能比较熟悉，为了让你更快了解，我们提供了你可能常用的参数命令组合：</p>
+<div class="table-wrap"><table><thead><tr><th>组合</th><th>用途</th><th>何时用</th><th>备注</th></tr></thead><tbody><tr><td><code>wave -h</code></td><td>查看帮助信息</td><td>不知道某个命令怎么用</td><td><code>wave -h --zh</code>可以输出中文版帮助</td></tr><tr><td><code>wave manual --color</code></td><td>输出彩色帮助</td><td>同上，不过更详细</td><td><code>wave manual --zh</code>可以输出中文版帮助</td></tr><tr><td><code>wave -V</code></td><td>查看MacWave的版本号</td><td>查看当前MacWave版本</td><td></td></tr><tr><td><code>wave install &lt;pkg_name&gt;</code></td><td>安装一个软件包</td><td>安装软件</td><td><code>wave install &lt;pkg_name&gt;@&lt;pkg_version&gt;</code> 可以安装指定版本的软件包</td></tr><tr><td><code>wave upgrade -X</code></td><td>升级一个软件包</td><td>一般的升级软件</td><td>适用于一般的开发者。 <code>-X, --remove-old-versions</code> 会删除存在的旧版软件包。请确认你不需要旧版，否则不要使用此参数</td></tr><tr><td><code>wave latest &lt;pkg_name&gt;</code></td><td>查看某个包有没有比本机更新的版本</td><td>不知道某个包能不能升级</td><td><code>wave latest -a</code> 可查看所有包的状态</td></tr><tr><td><code>wave selfupdate</code></td><td>更新MacWave自身</td><td>当你想升级你的MacWave</td><td></td></tr><tr><td><code>wave list</code></td><td>列举出已经安装的软件包和它们的版本号</td><td>想知道自己装了什么软件或什么版本的软件</td><td><code>wave list -a</code> 也是同样效果</td></tr><tr><td><code>wave info &lt;pkg_name&gt;</code></td><td>查看你安装了这个软件包的什么版本（未安装时输出 <code>None</code>）</td><td>不知道自己是否安装过某个软件包、或不知道装过什么版本</td><td></td></tr><tr><td><code>wave search &lt;pkg_name&gt;</code></td><td>搜索一个软件包（可输出部分内容然后模糊匹配）</td><td>想要搜 <code>wave</code> 有没有这个包</td><td></td></tr><tr><td><code>wave uninstall &lt;pkg_name&gt;</code></td><td>删除某个包</td><td>删除软件</td><td><code>wave uninstall &lt;pkg_name&gt;@&lt;pkg_version&gt;</code> 可以删除指定版本的软件包</td></tr></tbody></table></div>
+<p>更多帮助，请运行 <code>wave -h</code>、<code>wave -h --zh</code>（中文版）或 <code>wave manual</code>、<code>wave manual --zh</code>（中文版）。</p>
+<p>注：实际执行命令时，请把上述 <code>&lt;占位符&gt;</code> 换成实际内容。</p>
+<h3>安装位置</h3>
+<p><strong>注：下列只是我们推荐的目录，实际中你可以任意选择甚至自定义：</strong></p>
+<p>macOS（单用户安装）： <code>~/.local/macwave</code><br>macOS（共享安装）：<code>/opt/macwave</code><br>Linux： <code>/home/linuxwave/.linuxwave</code></p>
+<p>注意：在 Intel Mac 不建议选择 <code>/usr/local</code> —— 这可能和 Homebrew 在 Intel Mac 的默认目录冲突。</p>
+<p><strong>配置文件存储于（系统级安装始终优先）：</strong></p>
+<p><strong>MacWave：</strong></p>
+<ol><li><code>/opt/macwave_config</code>          共享安装（需要 sudo）</li><li><code>~/.config/macwave_config</code>     单用户安装（无需 sudo）</li></ol>
+<p><strong>LinuxWave：</strong></p>
+<ol><li><code>/etc/linuxwave_config</code>        共享安装（需要 sudo）</li><li><code>~/.config/macwave_config</code>     单用户安装（无需 sudo）</li></ol>
+<p><strong>警告：请不要随意修改配置文件 —— 这可能导致 <code>wave</code> 的某些行为异常或不符合预期！</strong></p>
+<h3>镜像</h3>
+<p>如果你是中国大陆用户，你很可能还需要镜像。如果你使用的是全量镜像，需要在 <code>~/.zshrc</code> （若用 <code>bash</code> 则是 <code>~/.bashrc</code> ）添加的环境变量如下（一些好的镜像可能会引导你去执行命令添加）：</p>
+<div class="table-wrap"><table><thead><tr><th>变量</th><th>取什么</th><th>默认</th></tr></thead><tbody><tr><td><code>MACWAVE_BOTTLE_DOMAIN</code></td><td>预编译软件包</td><td>GitHub Releases</td></tr><tr><td><code>MACWAVE_DEPS_DOMAIN</code></td><td>依赖库</td><td>GitHub Releases</td></tr><tr><td><code>MACWAVE_API_DOMAIN</code></td><td>软件包索引</td><td>raw.githubusercontent 上的 <code>infosource</code></td></tr><tr><td><code>MACWAVE_SELFUPDATE_DOMAIN</code></td><td>自更新数据</td><td>raw.githubusercontent 上的 <code>Selfupdate</code></td></tr><tr><td><code>MACWAVE_PYTHON_DOMAIN</code></td><td>自带解释器</td><td>raw.githubusercontent 上的 <code>Python</code></td></tr><tr><td><code>MACWAVE_CORE_DOMAIN</code></td><td>MacWave 自身文件</td><td>raw.githubusercontent 上的 <code>MacWave</code></td></tr><tr><td><code>MACWAVE_PIP_INDEX</code></td><td><code>pip</code> 的索引（只影响三个 Python 依赖）</td><td><code>https://pypi.org/simple</code></td></tr></tbody></table></div>
+<p><strong><code>infosource</code> 后面的 ref 段不能少：</strong> MacWave 是 <code>/HEAD</code>，LinuxWave 是 <code>/main</code> （镜像按 <code>&lt;组织&gt;/&lt;仓库&gt;/&lt;ref&gt;/…</code> 布局）。少了这一段，<code>wave search</code>、<code>wave latest</code> 读清单时只会得到 404。</p>
+<p>执行下面的命令即可添加：</p>
+<pre><code>export MACWAVE_BOTTLE_DOMAIN=https://mirror.example.cn/MacWave/bottle
+export MACWAVE_DEPS_DOMAIN=https://mirror.example.cn/MacWave/deps
+export MACWAVE_API_DOMAIN=https://mirror.example.cn/MacWave/infosource/HEAD
+export MACWAVE_SELFUPDATE_DOMAIN=https://mirror.example.cn/MacWave/selfupdate
+export MACWAVE_PYTHON_DOMAIN=https://mirror.example.cn/MacWave/python
+export MACWAVE_CORE_DOMAIN=https://mirror.example.cn/MacWave/core
+export MACWAVE_PIP_INDEX=https://pypi.mirror.example.cn/simple</code></pre>
+<p><code>export</code> 只在当前终端有效，关掉就没了。把这个块追加进 <code>~/.zshrc</code>，此后每个终端自动继承。追加命令如下：</p>
+<pre><code>cat &gt;&gt; ~/.zshrc &lt;&lt;&#x27;MWMIRROR&#x27;
+
+# MacWave mirror
+export MACWAVE_BOTTLE_DOMAIN=https://mirror.example.cn/MacWave/bottle
+export MACWAVE_DEPS_DOMAIN=https://mirror.example.cn/MacWave/deps
+export MACWAVE_API_DOMAIN=https://mirror.example.cn/MacWave/infosource/HEAD
+export MACWAVE_SELFUPDATE_DOMAIN=https://mirror.example.cn/MacWave/selfupdate
+export MACWAVE_PYTHON_DOMAIN=https://mirror.example.cn/MacWave/python
+export MACWAVE_CORE_DOMAIN=https://mirror.example.cn/MacWave/core
+export MACWAVE_PIP_INDEX=https://pypi.mirror.example.cn/simple
+MWMIRROR
+source ~/.zshrc</code></pre>
+<p>其中 <code>MACWAVE_PIP_INDEX</code> 只影响 <code>pip</code> 安装的三个 Python 依赖（<code>requests</code>、<code>toml</code>、<code>colorama</code>），所以可以指向任意 PyPI 镜像（国内推荐的有：UTSC（中科大）、TUNA（清华）等）。</p>
+<p>运行一次即可。新开的终端自己会读到，末尾的 <code>source</code> 只是让当前终端立刻生效。用不上的行可以删掉 —— 少写几行也能用，没设的变量会回落到官方地址。</p>
+<p>如果以后不想用镜像了，把他们删掉或注释掉即可。</p>
+<p>LinuxWave 同理，只需要把上面的 <code>MACWAVE</code> 改为 <code>LINUXWAVE</code> 即可。注意 Linux 默认的是 <code>bash</code> 。</p>
+<h3>联系方式</h3>
+<p>若有问题，可在项目 GitHub 提 issue 或给 <code>macwaveorg@outlook.com</code> 写信来联系我们。</p>
+<p><strong>祝你（waver）有愉快的冲浪（surf）体验！</strong></p>
+</main>
+</body>
+</html>
