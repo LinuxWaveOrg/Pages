@@ -531,12 +531,12 @@
     <p class="tagline" style="max-width:800px;" data-lang="zh">面向 Linux 软件开发者的包管理器。</p>
 
     <div class="version-block" style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;" data-lang="en">
-        <span class="v-line">Latest Version : 3.2.1</span>
-        <span class="v-line">Release on 2026-10-29</span>
+        <span class="v-line">Latest Version : 4.0.0</span>
+        <span class="v-line">Release on 2026-11-20</span>
     </div>
     <div class="version-block" style="color: #a0b0d0; font-size: 0.95rem; margin-top: -10px; margin-bottom: 30px;" data-lang="zh">
-        <span class="v-line">最新版本 : 3.2.1</span>
-        <span class="v-line">发布于 2026-10-29</span>
+        <span class="v-line">最新版本 : 4.0.0</span>
+        <span class="v-line">发布于 2026-11-20</span>
     </div>
 
     <a href="https://github.com/LinuxWaveOrg/LinuxWave/releases" class="btn-github" data-lang="en">View On GitHub</a>
@@ -623,7 +623,7 @@
                     <div class="square-front"></div>
                 </div>
             </button>
-            <pre><span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/HEAD/lib/install.sh | /bin/bash</pre>
+            <pre><span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/4.0/lib/install.sh | /bin/bash</pre>
         </div>
         <div class="warn-box" data-lang="en">
             <strong>Please use this form as written.</strong> Do not rewrite it as <code>/bin/bash -c "$(curl &hellip;)"</code>: that packs the whole script into a single command-line argument, and Linux refuses any single argument longer than 131&nbsp;071 bytes (<code>Argument list too long</code>) &mdash; this installer is already close to that size. Do not pipe it into <code>sudo bash</code> either: <code>sudo</code> resets the environment (including <code>PATH</code> and proxy variables) and bypasses the installer&rsquo;s own privilege handling. Run it on a reliable network, and avoid pressing <kbd>Ctrl-C</kbd> while it works &mdash; an interrupted stream stops the install partway; if that happens, just run the same command again.
@@ -665,7 +665,7 @@
 <span class="code-dollar">$</span> bash install.sh --ci --dir-option=1
 
 # straight from the repository
-<span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/HEAD/lib/install.sh | /bin/bash -s -- --ci --dir-option=1</pre>
+<span class="code-dollar">$</span> curl -fsSL https://raw.githubusercontent.com/LinuxWaveOrg/LinuxWave/4.0/lib/install.sh | /bin/bash -s -- --ci --dir-option=1</pre>
         </div>
         <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
             <code>--ci</code> answers the directory menu and the agreement automatically. It needs passwordless sudo, or root, when the chosen directory requires privilege. Without <code>--dir-option</code>, it takes the recommended entry <code>1</code> (<code>/home/linuxwave/.linuxwave</code>, the shared install) and prints which default it used, instead of reading a terminal that may not exist. <code>--dir-option=N</code> picks menu entry <code>N</code> (1-5); for the custom entry, append the path after <code>=</code>, as in <code>--dir-option=5=/opt/mylw</code>. Run <code>install.sh --help</code> for the list.
