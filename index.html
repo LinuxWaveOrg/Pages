@@ -806,6 +806,38 @@
             使用带版本号的名称 <code>{package_name}@{version}</code>，或先运行一次 <code>wave link {package_name}</code>，之后直接输入 <code>{package_name}</code> 即可。
         </p>
 
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Two Install Forms: One File or a Whole Tree</h2>
+        <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">两种安装形态：一个文件，或一整棵树</h2>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
+            Most packages are a single executable: LinuxWave takes that one file out of the archive and puts it under <code class="ic">bin/{package_name}@{version}/</code>. A few ship a directory instead — <code class="ic">gwget</code> needs both <code class="ic">bin/gwget</code> and <code class="ic">bin/gwget-bin</code>, and the self-built tools (<code class="ic">git</code>, <code class="ic">bash</code>, <code class="ic">patch</code>…) ship whole trees. Those are <strong>tree packages</strong>.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="zh">
+            大多数软件包就是一个可执行文件：LinuxWave 从压缩包里取出那一个文件，放进 <code class="ic">bin/{package_name}@{version}/</code>。少数包发出来的是一整棵目录 —— <code class="ic">gwget</code> 需要 <code class="ic">bin/gwget</code> 与 <code class="ic">bin/gwget-bin</code> 两件，自建的工具（<code class="ic">git</code>、<code class="ic">bash</code>、<code class="ic">patch</code>…）也是整棵树。这类叫<strong>整树软件包</strong>。
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
+            You do not pick this: the index declares it with <code class="ic">install: "tree"</code> and <code class="ic">wave install</code> follows it. The whole directory is installed as-is, so tools that look for files next to their own binary keep working — no rebuild on your machine, no assumptions about where the distribution put things.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="zh">
+            这不是你来选：索引里用 <code class="ic">install: "tree"</code> 声明，<code class="ic">wave install</code> 照做。整棵目录原样落地，于是那些「按自身位置找文件」的工具照常工作 —— 不在你机器上重编，也不假设发行版把它装到了哪里。
+        </p>
+        <div class="code-container">
+            <pre><span class="code-dollar">$</span> wave install gwget
+<span class="code-dollar">$</span> ls <span class="code-dollar">$(</span>wave basedir<span class="code-dollar">)</span>/bin/gwget@1.25.0-1/bin
+gwget  gwget-bin</pre>
+        </div>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
+            If a tree carries more than one command, <strong>every</strong> executable in its <code class="ic">bin/</code> is linked, so installing one package can give you several commands; <code class="ic">wave unlink</code> takes them away together.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="zh">
+            如果树里不止一个命令，<code class="ic">bin/</code> 下<strong>每个</strong>可执行文件都会链一条，所以装一个包可能得到好几个命令；<code class="ic">wave unlink</code> 也会把它们一起摘掉。
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
+            Tree packages need LinuxWave <strong>4.5</strong> or newer. Those records carry <code class="ic">min_client_version</code>, so an older client stops <em>before</em> downloading and tells you to run <code class="ic">wave selfupdate</code> — instead of quietly installing a single file out of the tree.
+        </p>
+        <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="zh">
+            整树软件包要求 LinuxWave <strong>4.5</strong> 及以上。这类记录带 <code class="ic">min_client_version</code>，旧客户端会在<strong>下载之前</strong>停下并提示运行 <code class="ic">wave selfupdate</code>，而不是悄悄从树里只装一个文件。
+        </p>
+
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="en">Symlink Management</h2>
         <h2 style="font-size: 1.8rem; border-bottom: 2px solid #4a90e2; padding-bottom: 10px; margin-top: 40px;" data-lang="zh">软链接管理</h2>
         <p style="font-size: 1.1rem; line-height: 1.6; opacity: 0.9;" data-lang="en">
